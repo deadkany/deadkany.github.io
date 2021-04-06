@@ -162,6 +162,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yilingxiao.com/2021/04/06/%E5%89%91%E6%8C%87-Offer-57-II-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="deadkany">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长夜漫">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/06/%E5%89%91%E6%8C%87-Offer-57-II-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">剑指 Offer 57 - II. 和为s的连续正数序列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-06 21:39:37 / 修改时间：21:47:02" itemprop="dateCreated datePublished" datetime="2021-04-06T21:39:37+08:00">2021-04-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode%E5%B0%8F%E5%B0%8F%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">leetcode小小笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>sss</p>
+<p>题目描述：</p>
+<p><img src="/2021/04/06/%E5%89%91%E6%8C%87-Offer-57-II-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/image-20210406214207456.png" alt="image-20210406214207456"></p>
+<p>采用双指针（滑窗）思想，定义left=1，right=2；计算出left到right连续整数的和，若相等记录数组，若小于目标值，right向右移动；若大于目标值，left向右移动。</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] findContinuousSequence(<span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;<span class="keyword">int</span>[]&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sum;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">            sum = ((left+right)*(right-left+<span class="number">1</span>))/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(sum==target)&#123;</span><br><span class="line">                <span class="keyword">int</span>[] ansChild = <span class="keyword">new</span> <span class="keyword">int</span>[right-left+<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;ansChild.length;i++) ansChild[i] = left+i;</span><br><span class="line">                ans.add(ansChild);</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum&lt;target) right++;</span><br><span class="line">            <span class="keyword">else</span> left++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans.toArray(<span class="keyword">new</span> <span class="keyword">int</span>[ans.size()][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>需要注意，当连续整数和与目标值相等时，储存完数组后也需要将左指针向右移动，寻找其他更小的组合。</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yilingxiao.com/2021/04/01/spring%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,10 +260,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-01 16:45:42 / 修改时间：16:46:10" itemprop="dateCreated datePublished" datetime="2021-04-01T16:45:42+08:00">2021-04-01</time>
+              <time title="创建时间：2021-04-01 16:45:42" itemprop="dateCreated datePublished" datetime="2021-04-01T16:45:42+08:00">2021-04-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-03 19:50:25" itemprop="dateModified" datetime="2021-04-03T19:50:25+08:00">2021-04-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -210,7 +291,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>p命名，c命名（property。constructor)</p>
+<p>bean的作用域，默认是单例模式（singleton）只会new一个对象</p>
+<p>还有原型模式（prototype），每次get都会返回一个新对象</p>
+<p>其他的request，session，application自能在web开发中使用</p>
+<p>bean自动装配（autowired）：</p>
+<p>byName、byType</p>
+<p>注解的约束：xmlns:context=”<a target="_blank" rel="noopener" href="http://www.springframework.org/schema/context&quot;">http://www.springframework.org/schema/context&quot;</a></p>
+
       
     </div>
 
@@ -252,10 +340,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-03-31 17:41:37 / 修改时间：17:42:30" itemprop="dateCreated datePublished" datetime="2021-03-31T17:41:37+08:00">2021-03-31</time>
+              <time title="创建时间：2021-03-31 17:41:37" itemprop="dateCreated datePublished" datetime="2021-03-31T17:41:37+08:00">2021-03-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-03 15:46:41" itemprop="dateModified" datetime="2021-04-03T15:46:41+08:00">2021-04-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -278,6 +372,19 @@
 
       
           <p>Java堆栈Stack类已经过时，Java官方推荐使用Deque替代Stack使用。Deque堆栈操作方法：push()、pop()、peek()。（两个栈实现队列中提到）</p>
+<p>trim()方法：</p>
+<p>删除字符串头尾的空格</p>
+<p>单例模式：</p>
+<p>1.饿汉式：</p>
+<p>缺点：浪费内存</p>
+<p>2.懒汉式（加锁式）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazyMan</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> String name=<span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazyMan</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hellllllllllllo!!, &quot;</span>+Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">this</span>.name=<span class="string">&quot;jack&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> LazyMan lazy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazyMan <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(lazy==<span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (LazyMan.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(lazy==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    lazy = <span class="keyword">new</span> LazyMan();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lazy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>3.饱汉式</p>
 
       
     </div>
@@ -1007,7 +1114,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
