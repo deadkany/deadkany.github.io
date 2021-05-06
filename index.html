@@ -162,6 +162,116 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yilingxiao.com/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="deadkany">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长夜漫">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">CENTOS使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-06 15:12:59 / 修改时间：17:28:36" itemprop="dateCreated datePublished" datetime="2021-05-06T15:12:59+08:00">2021-05-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>/etc 存放系统所需要的配置文件以及子目录</p>
+<p>/bin</p>
+<p>/dev</p>
+<p>/opt 安装额外软件位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls </span><br><span class="line">ls -a（所有文件，包括隐藏文件）</span><br><span class="line">ls -l(不包括隐藏文件)</span><br><span class="line"></span><br><span class="line">clear 清理屏幕</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-目录命令"><a href="#1-目录命令" class="headerlink" title="1.目录命令"></a>1.目录命令</h2><p>./ 当前目录</p>
+<p>../ 上一级目录</p>
+<p>/ 绝对路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~ 进入当前用户目录</span><br><span class="line">pwd 显示当前所在目录</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506154300979.png" alt="image-20210506154300979"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rmdir 删除目录（为空时才能删除）</span><br><span class="line">rmdir -p 强制删除(-p 是当子目录被删除后使它也成为空目录的话，则顺便一并删除。)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cp 复制文件</span><br><span class="line">cp 原位置 新位置</span><br><span class="line"></span><br><span class="line">rm 删除文件</span><br><span class="line">rm -f（忽略不存在的文件）</span><br><span class="line">rm -r 递归删除</span><br><span class="line">rm -rf（滑稽）</span><br><span class="line"></span><br><span class="line">mv 移动文件</span><br><span class="line">mv -f 强制替换</span><br><span class="line">mv -u 只替换已更新的文件</span><br><span class="line">mv 旧文件名 新文件名  （起到重命名的作用）</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-文件属性与权限"><a href="#2-文件属性与权限" class="headerlink" title="2.文件属性与权限"></a>2.文件属性与权限</h2><p>执行ls -l后</p>
+<p>1.文件权限</p>
+<p>l 链接</p>
+<p>d 文件夹</p>
+<p>-程序</p>
+<p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506161043344.png" alt="image-20210506161043344"></p>
+<p>2.属主与属组</p>
+<p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506161226560.png" alt="image-20210506161226560"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chgrp 更改属组</span><br><span class="line">chown 更改属主</span><br><span class="line">chmod 更改权限</span><br><span class="line">r：4  w：2 x：1</span><br><span class="line">777代表最高权限</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506163011064.png" alt="image-20210506163011064"></p>
+<p>偷个懒</p>
+<p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506163628906.png" alt="image-20210506163628906"></p>
+<p>硬链接：</p>
+<p>软链接：类似快捷方式</p>
+<p>硬链接在原文件删除后仍能访问，软连接不行</p>
+<p>ln 创建链接</p>
+<p>ln -s 创建软链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch 文件名 新建文件</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&#123;文字内容&#125;&quot;</span>&gt;&gt; 文件名  向文件中添加字符</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-Vim命令"><a href="#3-Vim命令" class="headerlink" title="3.Vim命令"></a>3.Vim命令</h2><p><img src="/2021/05/06/CENTOS%E4%BD%BF%E7%94%A8/image-20210506172833172.png" alt="image-20210506172833172"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yilingxiao.com/2021/04/06/%E5%89%91%E6%8C%87-Offer-57-II-%E5%92%8C%E4%B8%BAs%E7%9A%84%E8%BF%9E%E7%BB%AD%E6%AD%A3%E6%95%B0%E5%BA%8F%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,14 +1224,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
